@@ -12,6 +12,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python clean_data.py          # -> data_clean.csv
 .venv/bin/python viz_A_choropleth.py    # -> viz_A_choropleth.png
 .venv/bin/python viz_B_yoy.py           # -> viz_B_yoy.png, viz_B_yoy_neutral.png
+.venv/bin/python viz_A2_share_warmer.py # -> viz_A2_share_warmer.png, share_warmer_by_year.csv
 .venv/bin/python make_checkpoint_pdf.py # -> checkpoint_skeleton.pdf
 ```
 
@@ -19,9 +20,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 - [x] Viz A: "it's real", world choropleth (2024)
 - [x] Viz B: "it's overstated", year-over-year bars (World)
-- [ ] Second "real" chart (ideas: share of countries above baseline per year; box plots by decade)
+- [x] Viz A2: "it's real", percentage of countries warmer than their 1951–1980 average, by year
 - [ ] Second "overstated" chart (ideas: World line on a −5 to +5 °C axis; least-warming countries)
 - [ ] Final reflection (2–3 paragraphs) and author names/UCSD emails in `index.html`
 - [ ] Pick which side the group is leaning toward (checkpoint page 3)
 
-The report (course template) is `index.html`, live at https://thebigviditb.github.io/dsc106-project2/. Checkpoint page-3 bullets are in [design_decisions.md](design_decisions.md).
+The report (course template) is `index.html`, live at https://thebigviditb.github.io/dsc106-project2/. `working.html` shows every chart, including checkpoint-only ones. Checkpoint page-3 bullets and the A2 rationale are in [design_decisions.md](design_decisions.md).
