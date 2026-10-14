@@ -1,8 +1,11 @@
 """Build checkpoint_skeleton.pdf: 3 letter-landscape pages.
 
 Page 1: Viz A + Viz A2 (both "it's real" charts).
-Page 2: Viz B + placeholder for the second "it's overstated" chart.
-Page 3: proposition and deceptive-technique bullets.
+Page 2: Viz B + Viz C (both "it's overstated" charts).
+Page 3: proposition, leaning and deceptive-technique bullets.
+
+Pages 1-2 carry neutral headings so they don't give away which side each argues;
+page 3 explains it.
 """
 from pathlib import Path
 
@@ -37,16 +40,14 @@ def chart_page(pdf, heading, image, second=None, placeholder=None):
 
 
 with PdfPages(ROOT / "checkpoint_skeleton.pdf") as pdf:
-    chart_page(pdf, "Side 1: Climate change is real", "viz_A_choropleth.png",
-               second="viz_A2_share_warmer.png")
-    chart_page(pdf, "Side 2: Climate change is overstated", "viz_B_yoy.png",
-               placeholder="[ Second \"it's overstated\" visualization goes here ]")
+    chart_page(pdf, "Set 1", "viz_A_choropleth.png", second="viz_A2_share_warmer.png")
+    chart_page(pdf, "Set 2", "viz_B_yoy.png", second="viz_C_wide_axis.png")
 
     md = (ROOT / "design_decisions.md").read_text()
     bullets = md.split("## Checkpoint page 3: deceptive techniques (bullets)")[1].strip()
     bullets = bullets.replace("**", "").replace("*", "")
     fig = plt.figure(figsize=(11, 8.5))
-    fig.text(0.06, 0.94, "Proposition and deceptive techniques", fontsize=16, fontweight="bold")
+    fig.text(0.06, 0.94, "Proposition, leaning and deceptive techniques", fontsize=16, fontweight="bold")
     fig.text(0.06, 0.89, bullets, fontsize=11.5, va="top", wrap=True, linespacing=1.5)
     pdf.savefig(fig)
     plt.close(fig)
