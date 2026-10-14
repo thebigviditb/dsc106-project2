@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Climate Persuasion</title>
+  <style>
+    :root {
+      --surface: #fcfcfb;
+      --ink: #0b0b0b;
+      --ink-2: #52514e;
+      --rule: #e4e3df;
+      --accent: #a3231a;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --rule: #383835; --accent: #f08a6e; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--surface); color: var(--ink);
+      font: 17px/1.6 -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    main { max-width: 1000px; margin: 0 auto; padding: 48px 16px 80px; }
+    h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+    .lede { color: var(--ink-2); margin: 0 0 32px; }
+    h2 { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); }
+    figure { margin: 24px 0 8px; }
+    figure img { width: 100%; height: auto; display: block; border-radius: 6px; }
+    figcaption { color: var(--ink-2); font-size: 0.9rem; margin-top: 8px; }
+    a { color: var(--accent); }
+    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; display: block; overflow-x: auto; }
+    th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    td:last-child, th:last-child { white-space: nowrap; }
+    code { font-size: 0.9em; }
+    .files li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>DSC 106 Project 2: Persuasive Visualizations (Climate)</h1>
+  <p class="lede">Working page for the group. Proposition: <em>“Climate change is real: global temperatures have
+    risen meaningfully since the mid-20th century.”</em> Data: IMF Climate Change Indicators Dashboard,
+    Annual Surface Temperature Change.</p>
+
+  <h2>Side 1: It’s real</h2>
+  <figure>
+    <img src="viz_A_choropleth.png" alt="World choropleth of 2024 temperature change versus each country's 1951–1980 average; all 213 countries with data are warmer.">
+    <figcaption>Viz A: world choropleth, 2024. Second “real” chart still to do.</figcaption>
+  </figure>
+
+  <h2>Side 2: It’s overstated</h2>
+  <figure>
+    <img src="viz_B_yoy.png" alt="Bar chart of year-over-year change in world temperature, 1962–2024; 28 of 63 years were cooler than the year before.">
+    <figcaption>Viz B: year-over-year change, World. Neutral-color variant:
+      <a href="viz_B_yoy_neutral.png">viz_B_yoy_neutral.png</a>. Second “overstated” chart still to do.</figcaption>
+  </figure>
+
+  <h2>Files</h2>
+  <ul class="files">
+    <li><a href="checkpoint_skeleton.pdf">checkpoint_skeleton.pdf</a>: 3-page checkpoint layout with placeholders</li>
+    <li><a href="design_decisions.md">design_decisions.md</a>: scored design decisions (rendered below)</li>
+    <li><a href="data_clean.csv">data_clean.csv</a>: cleaned long-format data</li>
+  </ul>
+
+  <div id="decisions"><p>Loading design decisions…</p></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+  fetch("design_decisions.md")
+    .then(r => r.text())
+    .then(md => {
+      // Demote headings one level so the doc nests under this page's h1.
+      document.getElementById("decisions").innerHTML = marked.parse(md.replace(/^(#+) /gm, "#$1 "));
+    })
+    .catch(() => {
+      document.getElementById("decisions").innerHTML =
+        '<p><a href="design_decisions.md">Open design_decisions.md</a></p>';
+    });
+</script>
+</body>
+</html>
