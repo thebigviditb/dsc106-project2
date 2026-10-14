@@ -1,81 +1,209 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Climate Persuasion</title>
-  <style>
-    :root {
-      --surface: #fcfcfb;
-      --ink: #0b0b0b;
-      --ink-2: #52514e;
-      --rule: #e4e3df;
-      --accent: #a3231a;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root { --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --rule: #383835; --accent: #f08a6e; }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; background: var(--surface); color: var(--ink);
-      font: 17px/1.6 -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    main { max-width: 1000px; margin: 0 auto; padding: 48px 16px 80px; }
-    h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
-    .lede { color: var(--ink-2); margin: 0 0 32px; }
-    h2 { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); }
-    figure { margin: 24px 0 8px; }
-    figure img { width: 100%; height: auto; display: block; border-radius: 6px; }
-    figcaption { color: var(--ink-2); font-size: 0.9rem; margin-top: 8px; }
-    a { color: var(--accent); }
-    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; display: block; overflow-x: auto; }
-    th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-    td:last-child, th:last-child { white-space: nowrap; }
-    code { font-size: 0.9em; }
-    .files li { margin: 4px 0; }
-  </style>
-</head>
-<body>
-<main>
-  <h1>DSC 106 Project 2: Persuasive Visualizations (Climate)</h1>
-  <p class="lede">Working page for the group. Proposition: <em>“Climate change is real: global temperatures have
-    risen meaningfully since the mid-20th century.”</em> Data: IMF Climate Change Indicators Dashboard,
-    Annual Surface Temperature Change.</p>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Project 2 Report</title>
+        <style>
+            :root {
+                --color-neutral-95: hsl(220 10% 95%);
+                --color-neutral-90: hsl(220 10% 90%);
+                --color-neutral-80: hsl(220 10% 80%);
+                --color-neutral-70: hsl(220 10% 70%);
+                --color-neutral-60: hsl(220 10% 60%);
+                --color-neutral-50: hsl(220 10% 50%);
+                --color-neutral-40: hsl(220 10% 40%);
+                --color-neutral-30: hsl(220 10% 30%);
+                --color-neutral-20: hsl(220 10% 20%);
+                --color-neutral-10: hsl(220 10% 10%);
+            }
 
-  <h2>Side 1: It’s real</h2>
-  <figure>
-    <img src="viz_A_choropleth.png" alt="World choropleth of 2024 temperature change versus each country's 1951–1980 average; all 213 countries with data are warmer.">
-    <figcaption>Viz A: world choropleth, 2024. Second “real” chart still to do.</figcaption>
-  </figure>
+            html {
+                font: 100%/1.5 system-ui;
+                counter-reset: figure;
+                background: var(--color-neutral-95);
+                max-width: min(75vw, 80em);
+                margin: 0 auto;
+            }
 
-  <h2>Side 2: It’s overstated</h2>
-  <figure>
-    <img src="viz_B_yoy.png" alt="Bar chart of year-over-year change in world temperature, 1962–2024; 28 of 63 years were cooler than the year before.">
-    <figcaption>Viz B: year-over-year change, World. Neutral-color variant:
-      <a href="viz_B_yoy_neutral.png">viz_B_yoy_neutral.png</a>. Second “overstated” chart still to do.</figcaption>
-  </figure>
+            /* Headings */
 
-  <h2>Files</h2>
-  <ul class="files">
-    <li><a href="checkpoint_skeleton.pdf">checkpoint_skeleton.pdf</a>: 3-page checkpoint layout with placeholders</li>
-    <li><a href="design_decisions.md">design_decisions.md</a>: scored design decisions (rendered below)</li>
-    <li><a href="data_clean.csv">data_clean.csv</a>: cleaned long-format data</li>
-  </ul>
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                line-height: 1.1;
+                font-weight: 600;
+                text-wrap: balance;
+            }
 
-  <div id="decisions"><p>Loading design decisions…</p></div>
-</main>
-<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script>
-  fetch("design_decisions.md")
-    .then(r => r.text())
-    .then(md => {
-      // Demote headings one level so the doc nests under this page's h1.
-      document.getElementById("decisions").innerHTML = marked.parse(md.replace(/^(#+) /gm, "#$1 "));
-    })
-    .catch(() => {
-      document.getElementById("decisions").innerHTML =
-        '<p><a href="design_decisions.md">Open design_decisions.md</a></p>';
-    });
-</script>
-</body>
+            h1,
+            h2 {
+                border-bottom: 1px solid var(--color-neutral-80);
+                padding-bottom: 0.2em;
+            }
+
+            h1 {
+                margin-block: 1em 0.5rem;
+                font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+                font-weight: 800;
+
+                small {
+                    display: block;
+                    width: fit-content;
+                    padding: 0.2em 0.5em;
+                    margin-inline: auto;
+                    color: white;
+                    background: var(--color-neutral-40);
+                    font-size: 40%;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                }
+            }
+
+            h2 {
+                font-size: 180%;
+                color: var(--color-neutral-30);
+            }
+
+            h3 {
+                font-size: 130%;
+            }
+
+            /* Lists */
+
+            ul,
+            ol {
+                padding-inline-start: 2em;
+            }
+
+            li {
+                &::marker {
+                    color: var(--color-neutral-40);
+                }
+
+                + li {
+                    margin-top: 0.2em;
+                }
+            }
+
+            /* Sectioning elements */
+
+            header {
+                padding-block: 1em;
+                text-align: center;
+            }
+
+            main {
+                background: white;
+                color: var(--color-neutral-20);
+                border-radius: 1rem;
+                padding: 0.1rem 2rem;
+            }
+
+            /* Figures */
+
+            figure {
+                margin: 1em 0;
+                padding: 0.5rem;
+                margin-inline: -0.5em;
+                border: 1px solid var(--color-neutral-80);
+                box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+                text-align: center;
+                background: white;
+
+                > img {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                > figcaption {
+                    font: 500 75% var(--font-sans);
+                    background: var(--color-neutral-95);
+                    padding: 0.5rem;
+                    margin: -0.5rem;
+                    margin-top: 0.5rem;
+                    counter-increment: figure;
+                    text-align: left;
+
+                    &::before {
+                        content: "Figure " counter(figure) ": ";
+                        font-weight: bold;
+                        color: var(--color-neutral-40);
+                    }
+
+                    a:not(:hover, :focus, :active) {
+                        color: inherit;
+                        text-decoration: underline;
+                        text-decoration-color: color-mix(
+                            in lab,
+                            currentColor,
+                            transparent 70%
+                        );
+                    }
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                <small>Project 2</small>
+                Persuasive or Deceptive Visualization?
+            </h1>
+
+            <p><strong>Vidit Batta, [TEAMMATE NAMES]</strong> — <em>[UCSD EMAIL ADDRESSES]</em></p>
+        </header>
+
+        <main>
+            <h2>Proposition: Climate change is real: global temperatures have risen meaningfully since the mid-20th century.</h2>
+
+            <section>
+                <h3>FOR the Proposition</h3>
+
+                <figure>
+                    <img src="viz_A_choropleth.png" alt="World map of 2024 surface temperature change relative to each country's 1951–1980 average. Every country with data is shaded red; 213 of 213 countries with data were warmer than their baseline." />
+                    <figcaption>Change in each country's 2024 surface temperature from its 1951–1980 average. All 213 countries with 2024 data were warmer than their baseline.</figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li><strong>Showing a single year, 2024 (−0.5).</strong> We mapped only 2024, the hottest year in the dataset (World +2.12 °C, well above 2023's +1.78 °C). It was also the record year for 124 of 225 countries. Choosing the peak makes the map as red as it can be: the median country is +1.87 °C in 2024 but +1.35 °C averaged over 2015–2024. We considered a 10-year average, which smooths out one-year spikes and is more defensible. The average still shows every country warmer (216 of 216), so 2024 alone adds intensity without changing the conclusion. We used it because "the latest year" sounds like a neutral default.</li>
+                    <li><strong>Diverging midpoint shifted to −0.3 °C (−1).</strong> A blue–gray–red scale tells the reader that gray means "no change", but our gray sits 0.3 °C below zero. A country with zero change therefore already looks pale orange. The persuasive effect is that no country can look neutral: even Iceland, the least-warmed country at +0.035 °C, reads as clearly warm. Centering the scale at 0 is the honest choice. We rejected it because Iceland would have been close to gray, giving viewers a visual "exception" to point to.</li>
+                    <li><strong>Lopsided, clipped color range, −1 to +3 °C (−1).</strong> The blue side of the scale stops at −1 and goes unused, since no country was below 0 in 2024, while the red side has five shades. Everything above +3 °C (20 countries, up to +3.69 °C) is drawn in the darkest red, and the legend reads "+3 or more". Spending nearly all the color resolution on warming makes the map look uniformly dark red. A symmetric range such as −4 to +4 °C would be standard for a diverging scale, but most countries would then look medium orange and the map would feel less urgent. Keeping a short blue arm in the legend implies the scale could have shown cooling, which makes the all-red map look like a finding rather than a design choice.</li>
+                    <li><strong>A map rather than a ranked chart (−0.5).</strong> Maps give each country space in proportion to its land area. The largest countries (Russia, Canada) are at high latitudes, which warm fastest, so they get the darkest colors and the most space. The map therefore looks hotter than the typical country is. A sorted bar or dot chart would weight Iceland and Canada equally and show the real spread from +0.04 to +3.69 °C. We chose the map because it is easy to read at a glance and familiar from climate reporting, so the extra weight on the Arctic isn't obvious.</li>
+                    <li><strong>Text and labelling (+1).</strong> The headline "Nearly Every Nation Is Running Hotter Than Its Past" is emotive but literally true. If anything it undersells the data, since "nearly" covers countries with no data (e.g., Türkiye, Yemen). The subtitle states the year, baseline and unit, the "213 of 213 countries with data" callout is exact, the source is cited, and missing countries are hatched gray and labelled "No data" rather than hidden. We considered a stronger claim such as "Every Nation…", but the accurate, careful-sounding text is what makes the color choices above believable.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>AGAINST the Proposition</h3>
+
+                <figure>
+                    <img src="viz_B_yoy.png" alt="Bar chart of year-over-year change in world mean surface temperature, 1962–2024. Red bars for warmer years and blue bars for cooler years alternate around zero; 28 of 63 years were cooler than the year before." />
+                    <figcaption>Change in world mean surface temperature from one year to the next, 1962–2024. 28 of 63 years were cooler than the year before.</figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li><strong>Plotting year-over-year change instead of temperature (−2).</strong> Each bar is one year's world temperature minus the previous year's. This transformation removes the long-term level entirely. The world went from +0.21 °C (1961) to +2.12 °C (2024), but warming steps (average +0.25 °C) and cooling steps (average −0.23 °C) look nearly the same size, so the chart reads as random up-and-down noise. The bars add up to +1.9 °C, but no reader adds 63 bars in their head. Plotting the anomaly as a simple line would show the rise immediately, which is why we didn't. This is the most deceptive choice in the project.</li>
+                    <li><strong>Leaving out any trend or running total (−1.5).</strong> We deliberately drew no cumulative line or fitted trend. Either would turn the "noise" into an obvious upward climb, about +0.03 °C per year on average, which adds up over six decades. Charts of noisy data often include a trend line, so we considered adding a short-window moving average that would look like due diligence while staying flat. We dropped it because even that drifts upward. Omitting the trend is hard to spot because the chart has nothing missing on its face.</li>
+                    <li><strong>Headline and callout (−1).</strong> "Global Temperatures Fall Almost as Often as They Rise" and "28 of 63 years were cooler than the year before" are both literally true: 28 cooling years, 34 warming years, and 1965 unchanged. The framing invites readers to treat 28 vs. 34 as a coin flip and stop there. A count of directions says nothing about size or accumulation: the cooling-year rate is the same before and after 1993 (14 of 32 vs. 14 of 31) even as overall warming accelerated. We colored the callout blue to match the cooling bars. A headline like "Temperatures Are Stable" would be false and easy to catch, so we picked a frequency claim we could defend.</li>
+                    <li><strong>Y-axis symmetric around zero (−0.5).</strong> We gave the axis equal room above and below zero (±0.8 °C), so warming and cooling swings look visually balanced. The actual extremes (+0.60 and −0.50 °C) are close to symmetric, so the distortion is mild, which also makes it hard to challenge. We considered fitting the axis tightly to the data (−0.5 to +0.6), but that would show slightly more space for warming, and the even axis looks more like a neutral default.</li>
+                    <li><strong>Credible framing (+1.5).</strong> The axis says "Change from previous year (°C)", the subtitle says "year-over-year change", the full 1962–2024 range is shown with no years cherry-picked, and the IMF/FAO/NASA source is cited. Red and blue follow the usual warm/cool convention used in climate charts. Nothing is mislabelled, and a careful reader could figure out what's being hidden. We also tried a single neutral color for all bars, but the red/blue version is more persuasive because the blue bars stand out and are easy to count. That's why we kept it.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Final Reflection</h2>
+
+                <p>[WRITE FINAL REFLECTION PARAGRAPHS HERE.]</p>
+            </section>
+        </main>
+    </body>
 </html>

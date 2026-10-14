@@ -21,6 +21,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 - [x] Viz B: "it's overstated", year-over-year bars (World)
 - [ ] Second "real" chart (ideas: share of countries above baseline per year; box plots by decade)
 - [ ] Second "overstated" chart (ideas: World line on a −5 to +5 °C axis; least-warming countries)
+- [ ] Final reflection (2–3 paragraphs) and author names/UCSD emails in `index.html`
 - [ ] Pick which side the group is leaning toward (checkpoint page 3)
 
-Design rationale and scores are in [design_decisions.md](design_decisions.md).
+The report (course template) is `index.html`, live at https://thebigviditb.github.io/dsc106-project2/. Checkpoint page-3 bullets are in [design_decisions.md](design_decisions.md).
