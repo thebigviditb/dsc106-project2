@@ -30,24 +30,35 @@ The report has one FOR and one AGAINST slot. Charts below are on the checkpoint 
 
 ## Checkpoint page 3: deceptive techniques (bullets)
 
-**Proposition:** Climate change is real: global temperatures have risen meaningfully since the mid-20th century. *(Group leaning: TBD.)*
+**Proposition:** "Climate change is real: global temperatures have risen meaningfully since the mid-20th century."
+- Set 1 (page 1) argues the proposition is true: climate change is real.
+- Set 2 (page 2) argues the proposition is false: climate change is not real, or is overstated.
 
-**"It's real" side (Viz A, map):**
+**Leaning toward:** the first visualization from each set, the world map (page 1, top) and the year-over-year bar chart (page 2, top).
+
+**Set 1, top (world map, 2024):**
 - Shows only 2024, the hottest year on record, instead of a multi-year average.
 - Diverging color midpoint shifted below zero (−0.3 °C), so near-zero values read as warm.
 - Asymmetric, clipped color domain (−1 to +3 °C) saturates the warm end and leaves the cool arm unused.
 - Area-weighted map form over-represents fast-warming high-latitude countries (Russia, Canada).
 - Emotive headline with an exact, earnest callout and source to lend credibility.
 
-**"It's real" side (Viz A2, percentage of countries by year):**
-- Counts countries above their baseline instead of showing degrees, so a few very hot countries cannot drive the result, and small warming counts the same as large warming.
+**Set 1, bottom (percentage of countries warmer than average, by year):**
+- Counts countries above their baseline instead of showing degrees, so small warming counts the same as large warming.
 - A dashed 50% line stands in for "nothing is happening", so the early years read as random and the later years as a clear change.
 - Red fill under the line, and only the 1965 low and the 2024 point are labelled.
 - Axes, baseline and source are all accurate; the persuasion is in the metric and the framing.
 
-**"It's overstated" side (Viz B, bars):**
+**Set 2, top (year-over-year change, World):**
 - Shows only year-over-year differences, hiding the cumulative ~1.9 °C rise.
 - Omits any trend or cumulative line.
 - Cherry-picked frequency stat ("28 of 63 years were cooler") that ignores accumulation.
 - Symmetric y-axis to make warming and cooling look balanced.
 - Accurate labels and source citation so the chart reads as credible.
+
+**Set 2, bottom (World temperature on a −5 to +5 °C axis):**
+- Y-axis fixed at −5 to +5 °C, so the ~1.9 °C rise fills under a quarter of the plot.
+- Symmetric axis around zero, leaving a whole "cooling" half that no data point reaches.
+- Calm headline and a "within 2.2 °C" callout that are true but frame the rise as small.
+- Cool blue line, no trend line, no shading under the curve.
+- Accurate labels, baseline, endpoints and source, so the chart reads as credible.
